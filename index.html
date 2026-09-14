@@ -1,0 +1,830 @@
+<title>KrisFlyer Redemption Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#f6f3ea;
+    --surface:#ffffff;
+    --surface-alt:#efe8d6;
+    --ink:#1c2030;
+    --ink-muted:#5c6070;
+    --ink-faint:#8a8d9c;
+    --border:#ddd3b8;
+    --border-soft:#e9e1cc;
+    --accent:#93661a;
+    --accent-ink:#7a5414;
+    --accent-soft:#f1e2bb;
+    --sia:#1f3a63;
+    --sia-soft:#e3ebf6;
+    --scoot:#b45a12;
+    --scoot-soft:#fbe7d3;
+    --good:#2f7d4f;
+    --good-soft:#e1f0e6;
+    --warn:#93661a;
+    --warn-soft:#f1e2bb;
+    --closed:#7a7f91;
+    --closed-soft:#eceef2;
+    --shadow: 0 1px 2px rgba(28,32,48,.06), 0 8px 24px -12px rgba(28,32,48,.18);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12131c;
+      --surface:#191b28;
+      --surface-alt:#20223280;
+      --ink:#eceaf6;
+      --ink-muted:#a6a9bd;
+      --ink-faint:#7d8095;
+      --border:#31344a;
+      --border-soft:#282b3e;
+      --accent:#e0b660;
+      --accent-ink:#f0cf8a;
+      --accent-soft:#3a3220;
+      --sia:#8fb3e4;
+      --sia-soft:#1c2940;
+      --scoot:#f0954a;
+      --scoot-soft:#3a2718;
+      --good:#5ec78d;
+      --good-soft:#183226;
+      --warn:#e0b660;
+      --warn-soft:#3a3220;
+      --closed:#8d90a3;
+      --closed-soft:#262838;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12131c;
+    --surface:#191b28;
+    --surface-alt:#20223280;
+    --ink:#eceaf6;
+    --ink-muted:#a6a9bd;
+    --ink-faint:#7d8095;
+    --border:#31344a;
+    --border-soft:#282b3e;
+    --accent:#e0b660;
+    --accent-ink:#f0cf8a;
+    --accent-soft:#3a3220;
+    --sia:#8fb3e4;
+    --sia-soft:#1c2940;
+    --scoot:#f0954a;
+    --scoot-soft:#3a2718;
+    --good:#5ec78d;
+    --good-soft:#183226;
+    --warn:#e0b660;
+    --warn-soft:#3a3220;
+    --closed:#8d90a3;
+    --closed-soft:#262838;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px -14px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,sans-serif;
+    padding-inline:20px;
+    padding-block:28px 60px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:22px;}
+
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-0.01em;text-wrap:balance;margin:0;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;}
+
+  /* ---------- header / boarding pass strip ---------- */
+  header.board{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 26px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.board::before{
+    content:"";
+    position:absolute; inset:0 auto 0 0; width:6px;
+    background:linear-gradient(180deg,var(--accent),var(--sia));
+  }
+  .board-left{display:flex;flex-direction:column;gap:6px;padding-left:10px;}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent-ink); font-weight:600;
+  }
+  h1{font-size:clamp(1.5rem,2.4vw,2rem);}
+  .board-sub{color:var(--ink-muted);font-size:14.5px;max-width:52ch;}
+  .board-right{
+    display:flex; align-items:center; gap:14px;
+    font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--ink-muted);
+    border-left:1px dashed var(--border); padding-left:18px;
+  }
+  .route-pill{
+    display:flex;align-items:center;gap:8px;
+    font-size:20px;font-weight:600;color:var(--ink);
+  }
+  .route-pill .dash{color:var(--ink-faint);font-weight:400;}
+  .updated{display:flex;flex-direction:column;gap:2px;font-size:12px;}
+  .updated b{color:var(--ink);font-weight:600;font-size:12.5px;}
+
+  /* ---------- section shell ---------- */
+  section.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:20px 22px;
+  }
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    margin-bottom:14px; flex-wrap:wrap;
+  }
+  .section-head h2{font-size:1.15rem;}
+  .section-note{color:var(--ink-faint);font-size:12.5px;max-width:60ch;}
+
+  /* ---------- promo cards ---------- */
+  .promo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+  .promo{
+    border:1px solid var(--border-soft); border-radius:12px; padding:14px 16px;
+    background:var(--surface-alt); display:flex; flex-direction:column; gap:8px;
+  }
+  .promo-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .tag{
+    font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    padding:3px 8px; border-radius:999px; white-space:nowrap;
+  }
+  .tag.sia{background:var(--sia-soft);color:var(--sia);}
+  .tag.scoot{background:var(--scoot-soft);color:var(--scoot);}
+  .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;letter-spacing:.02em;}
+  .pill.active{background:var(--good-soft);color:var(--good);}
+  .pill.closing{background:var(--warn-soft);color:var(--warn);}
+  .pill.closed{background:var(--closed-soft);color:var(--closed);}
+  .promo h3{font-size:.98rem;font-weight:600;font-family:"Inter";}
+  .promo .discount{font-size:13.5px;color:var(--ink);}
+  .promo .win{font-size:12.5px;color:var(--ink-muted);display:flex;flex-direction:column;gap:2px;}
+  .promo .win span b{color:var(--ink);font-weight:600;}
+  .promo .notes{font-size:12px;color:var(--ink-faint);line-height:1.45;}
+  .promo a{font-size:12.5px;color:var(--accent-ink);text-decoration:none;font-weight:600;}
+  .promo a:hover{text-decoration:underline;}
+
+  /* ---------- filters ---------- */
+  .filters{
+    display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center;
+    padding:14px 16px; background:var(--surface-alt); border:1px solid var(--border-soft);
+    border-radius:12px;
+  }
+  .filter-group{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .filter-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);font-weight:600;margin-right:2px;}
+  .seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface);}
+  .seg button{
+    border:none;background:transparent;padding:6px 13px;font-size:13px;font-family:inherit;color:var(--ink-muted);
+    cursor:pointer;font-weight:500;
+  }
+  .seg button.on{background:var(--ink);color:var(--surface);}
+  .chip{
+    border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--ink-muted);
+    padding:5px 12px;font-size:12.5px;cursor:pointer;font-family:inherit;font-weight:500;
+  }
+  .chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);}
+  input[type="search"]{
+    border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:13px;font-family:inherit;
+    background:var(--surface);color:var(--ink);min-width:190px;
+  }
+  input[type="search"]:focus, .seg button:focus-visible, .chip:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+
+  /* ---------- tables ---------- */
+  .table-scroll{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  thead th{
+    text-align:right; font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-faint); font-weight:600; padding:8px 10px; border-bottom:1px solid var(--border);
+    white-space:nowrap;
+    position:sticky; top:0; z-index:3; background:var(--surface);
+    box-shadow:0 1px 0 0 var(--border);
+  }
+  thead th:first-child, thead th:nth-child(2), thead th:nth-child(3){text-align:left;}
+  tbody td{padding:8px 10px;border-bottom:1px solid var(--border-soft);white-space:nowrap;text-align:right;}
+  tbody td:first-child, tbody td:nth-child(2), tbody td:nth-child(3){text-align:left;white-space:normal;}
+  tbody tr:hover{background:var(--surface-alt);}
+  .zone-row td{
+    background:var(--surface-alt); font-weight:600; color:var(--ink-muted); font-size:12px;
+    text-transform:uppercase; letter-spacing:.04em; padding:7px 10px;
+  }
+  .city{font-weight:600;color:var(--ink);}
+  .country{color:var(--ink-faint);font-size:12.5px;}
+  .miles{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;}
+  .miles.dash{color:var(--ink-faint);}
+  .flag{color:var(--warn);font-size:10px;vertical-align:super;margin-left:2px;cursor:help;}
+  .empty-row td{text-align:center;color:var(--ink-faint);padding:22px;font-style:italic;}
+
+  /* ---------- promo-adjusted price cells ---------- */
+  .price-cell{display:inline-flex;flex-direction:column;align-items:flex-end;line-height:1.25;}
+  .price-cell .was{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--ink-faint);}
+  .price-cell .now{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--good);font-weight:600;}
+  .promo-dot{
+    display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--good);
+    margin-left:5px;vertical-align:middle;cursor:help;
+  }
+
+  /* ---------- miles-budget search ---------- */
+  input[type="number"].budget-input{
+    border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:13px;font-family:"IBM Plex Mono",monospace;
+    background:var(--surface);color:var(--ink);width:130px;
+  }
+  input[type="number"].budget-input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  #results-section{display:none;}
+  #results-section.show{display:block;}
+  .results-list{display:flex;flex-direction:column;gap:0;}
+  .result-row{
+    display:grid; grid-template-columns:56px 1.4fr 1fr 1fr auto; gap:10px; align-items:center;
+    padding:9px 4px; border-bottom:1px solid var(--border-soft); font-size:13.5px;
+  }
+  .result-row:last-child{border-bottom:none;}
+  .result-row .r-dest{font-weight:600;color:var(--ink);}
+  .result-row .r-country{color:var(--ink-faint);font-size:12px;}
+  .result-row .r-cabin{color:var(--ink-muted);font-size:12.5px;}
+  .result-row .r-miles{text-align:right;}
+  .result-row .r-left{color:var(--ink-faint);font-size:11px;text-align:right;white-space:nowrap;}
+  .results-more{color:var(--ink-faint);font-size:12px;padding:10px 4px 0;font-style:italic;}
+
+  /* ---------- empty-state box (reused for load errors etc.) ---------- */
+  .spot-empty{
+    border:1px dashed var(--border); border-radius:12px; padding:16px 18px;
+    color:var(--ink-muted); font-size:13.5px; line-height:1.55; background:var(--surface-alt);
+  }
+  .spot-empty code{
+    background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:1px 6px;
+    font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--accent-ink);
+  }
+
+  /* ---------- auto-monitor banner ---------- */
+  .monitor-banner{
+    display:flex; gap:10px; align-items:flex-start;
+    border:1px solid var(--warn); background:var(--warn-soft); color:var(--accent-ink);
+    border-radius:12px; padding:12px 16px; font-size:13px; line-height:1.5;
+  }
+  .monitor-banner b{font-weight:700;}
+  .monitor-banner a{color:inherit;font-weight:600;}
+  .monitor-ok{color:var(--ink-faint);font-size:12px;}
+
+  /* ---------- footer ---------- */
+  footer{display:flex;flex-direction:column;gap:8px;padding:4px 4px 0;color:var(--ink-faint);font-size:12px;}
+  footer .src-list{display:flex;flex-wrap:wrap;gap:4px 14px;}
+  footer a{color:var(--ink-faint);}
+  footer a:hover{color:var(--accent-ink);}
+  .legend-note{font-size:12px;color:var(--ink-faint);line-height:1.6;}
+
+  @media (max-width:640px){
+    header.board{padding:18px 16px;}
+    .board-right{border-left:none;padding-left:0;border-top:1px dashed var(--border);padding-top:12px;width:100%;}
+    section.card{padding:16px;}
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="board">
+    <div class="board-left">
+      <span class="eyebrow">KrisFlyer &middot; Award Miles Board</span>
+      <h1>Redemption tracker, ex&#8209;Singapore</h1>
+      <p class="board-sub">Singapore Airlines &amp; Scoot award mileage rates and current promotions, out of Changi (SIN). Self-hosted on GitHub Pages, auto-checked for promo changes.</p>
+    </div>
+    <div class="board-right">
+      <div class="route-pill mono"><span>SIN</span><span class="dash">&#8594;</span><span id="route-dest">ANY</span></div>
+      <div class="updated">
+        <span>Last refreshed</span>
+        <b id="last-updated">&mdash;</b>
+      </div>
+    </div>
+  </header>
+
+  <section class="card" id="promo-section">
+    <div class="section-head">
+      <h2>Current KrisFlyer promotions</h2>
+      <span class="section-note">A GitHub Action checks the official promo pages every few hours and pushes an alert when something changes.</span>
+    </div>
+    <div id="monitor-banner-host" style="margin-bottom:14px;"></div>
+    <div class="promo-grid" id="promo-grid"></div>
+  </section>
+
+  <section class="card">
+    <div class="section-head">
+      <h2>Filter the board</h2>
+    </div>
+    <div class="filters">
+      <div class="filter-group">
+        <span class="filter-label">Airline</span>
+        <div class="seg" id="f-airline">
+          <button data-v="all" class="on">All</button>
+          <button data-v="sia">SIA</button>
+          <button data-v="scoot">Scoot</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Trip</span>
+        <div class="seg" id="f-trip">
+          <button data-v="1" class="on">One&#8209;way</button>
+          <button data-v="2">Return</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Award type</span>
+        <div class="seg" id="f-tier">
+          <button data-v="saver" class="on">Saver</button>
+          <button data-v="advantage">Advantage</button>
+        </div>
+      </div>
+      <div class="filter-group" id="f-region"></div>
+      <div class="filter-group" style="margin-left:auto;">
+        <input type="search" id="f-search" placeholder="Search destination or country&hellip;">
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="budget-section">
+    <div class="section-head">
+      <h2>Search by miles</h2>
+      <span class="section-note">Enter a KrisFlyer balance to see every reachable destination &amp; cabin within it &mdash; current promo pricing included.</span>
+    </div>
+    <div class="filters" style="margin-bottom:0;">
+      <div class="filter-group">
+        <span class="filter-label">Miles you have</span>
+        <input type="number" class="budget-input" id="f-budget" min="0" step="500" placeholder="e.g. 45000">
+      </div>
+      <span class="section-note" id="budget-hint" style="margin-left:6px;">Uses the Airline / Trip / Award type / Region / search filters above.</span>
+    </div>
+    <div id="results-section">
+      <div class="results-list" id="results-list"></div>
+      <div class="results-more" id="results-more"></div>
+    </div>
+  </section>
+
+  <section class="card" id="sia-section">
+    <div class="section-head">
+      <h2><span class="tag sia">SIA</span>&nbsp; Singapore Airlines award chart</h2>
+      <span class="section-note" id="sia-count"></span>
+    </div>
+    <div class="table-scroll">
+      <table id="sia-table">
+        <thead>
+          <tr>
+            <th>Destination</th><th>Country</th><th>Zone</th>
+            <th>Economy</th><th>Premium&nbsp;Ec.</th><th>Business</th><th>First</th>
+          </tr>
+        </thead>
+        <tbody id="sia-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="scoot-section">
+    <div class="section-head">
+      <h2><span class="tag scoot">Scoot</span>&nbsp; Scoot award chart</h2>
+      <span class="section-note" id="scoot-count"></span>
+    </div>
+    <div class="table-scroll">
+      <table id="scoot-table">
+        <thead>
+          <tr><th>Destination</th><th>Country</th><th>Zone</th><th>Economy</th></tr>
+        </thead>
+        <tbody id="scoot-tbody"></tbody>
+      </table>
+    </div>
+    <p class="legend-note" id="scoot-flag-note" style="margin-top:10px;"></p>
+  </section>
+
+  <footer>
+    <div><b style="color:var(--ink-muted)">Promo pricing:</b> a <span class="promo-dot" style="margin-left:0;"></span> next to a fare means an active promotion is already baked into that number (hover it to see which); the struck&#8209;through figure above it is the standard chart rate. Promotions only ever discount Saver awards, so switch Award type to Saver to see them.</div>
+    <div><b style="color:var(--ink-muted)">On dates:</b> KrisFlyer award mileage is fixed by zone, not by date &mdash; SIA and Scoot don't publish a live "which dates have seats" feed. Promotion travel windows above show when discounted awards apply; for actual seat availability on a specific date, check singaporeair.com / flyscoot.com directly, or ask Claude to look it up for you. Return mileage = 2&times; one&#8209;way, per standard KrisFlyer policy.</div>
+    <div class="monitor-ok" id="monitor-status"></div>
+    <div class="src-list" id="src-list"></div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var DATA = null;
+
+  var state = { airline:'all', trip:1, tier:'saver', region:null, q:'', budget:null };
+
+  // ---- promo rule engine: bakes active-promo discounts straight into cells ----
+  function activeRules(){
+    var out = [];
+    (DATA.promotions || []).forEach(function(p){
+      if(p.status !== 'active' && p.status !== 'closing') return;
+      (p.rules || []).forEach(function(r){
+        out.push(Object.assign({promoId:p.id, promoTitle:p.title}, r));
+      });
+    });
+    return out;
+  }
+
+  // Returns {price, prom} for one cabin field's one-way base rate `n`
+  // (`n` already in thousands of miles), applying any matching active
+  // promo rule for this airline/field/zone/city combination.
+  function promoPrice(n, airline, field, zone, city){
+    if(n===null || n===undefined) return {price:null, promo:null};
+    var rules = activeRules();
+    for(var i=0;i<rules.length;i++){
+      var r = rules[i];
+      if(r.airline !== airline || r.field !== field) continue;
+      if(r.excludeCities && r.excludeCities.indexOf(city) !== -1) continue;
+      if(r.includeZones && r.includeZones.indexOf(zone) === -1) continue;
+      var discounted = Math.round(n * (1 - r.discountPct/100) * 10) / 10;
+      return {price:discounted, promo:{id:r.promoId, title:r.promoTitle, pct:r.discountPct}};
+    }
+    return {price:n, promo:null};
+  }
+
+  function fmtNum(v){
+    return (Math.round(v*10)/10).toLocaleString(undefined,{maximumFractionDigits:1});
+  }
+
+  // Renders one table cell for a base rate `n`, applying trip multiplier and
+  // any active promo discount for this airline/field/zone/city.
+  function fmtCell(n, airline, field, zone, city){
+    if(n===null || n===undefined) return '<span class="miles dash">&ndash;</span>';
+    var adj = promoPrice(n, airline, field, zone, city);
+    if(adj.promo){
+      var base = n * state.trip;
+      var now = adj.price * state.trip;
+      return '<span class="price-cell"><span class="was(�'+fmtNum(base)+'k</span>'+
+        '<span class="now">'+fmtNum(now)+'k<span class="promo-dot" title="'+adj.promo.title+' — '+adj.promo.pct+'% off, baked in">&nbsp;</span></span></span>';
+    }
+    var v = n * state.trip;
+    return '<span class="miles">'+fmtNum(v)+'k</span>';
+  }
+
+  function fmtDate(iso){
+    try{
+      var d = new Date(iso);
+      return d.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});
+    }catch(e){ return iso; }
+  }
+
+  function regionsFrom(){
+    var set = {};
+    DATA.siaRates.forEach(function(r){ set[r.region]=true; });
+    DATA.scootRates.forEach(function(r){ set[r.region]=true; });
+    return Object.keys(set);
+  }
+
+  function renderRegionChips(){
+    var host = document.getElementById('f-region');
+    host.innerHTML = '<span class="filter-label">Region</span>';
+    var regions = regionsFrom();
+    regions.forEach(function(r){
+      var b = document.createElement('button');
+      b.className = 'chip';
+      b.textContent = r;
+      b.dataset.v = r;
+      b.addEventListener('click', function(){
+        state.region = (state.region === r) ? null : r;
+        renderRegionChips();
+        renderAll();
+      });
+      if(state.region === r) b.classList.add('on');
+      host.appendChild(b);
+    });
+  }
+
+  function wireSeg(id, key, after){
+    var host = document.getElementById(id);
+    host.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        host.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+        btn.classList.add('on');
+        var v = btn.dataset.v;
+        state[key] = (key==='trip') ? parseInt(v,10) : v;
+        if(after) after();
+        renderAll();
+      });
+    });
+  }
+
+  function matchesFilters(row){
+    if(state.region && row.region !== state.region) return false;
+    if(state.q){
+      var q = state.q.toLowerCase();
+      if(row.city.toLowerCase().indexOf(q)===-1 && row.country.toLowerCase().indexOf(q)===-1) return false;
+    }
+    return true;
+  }
+
+  function ratesLookup(rates, key){
+    var m = {};
+    rates.forEach(function(r){ m[r[key]] = r; });
+    return m;
+  }
+
+  function renderSia(){
+    var section = document.getElementById('sia-section');
+    if(state.airline === 'scoot'){ section.style.display='none'; return; }
+    section.style.display='';
+    var lookup = ratesLookup(DATA.siaRates, 'zone');
+    var rows = DATA.siaDestinations.map(function(d){
+      var z = lookup[d.zone];
+      return Object.assign({}, d, z);
+    }).filter(matchesFilters);
+
+    rows.sort(function(a,b){
+      if(a.region !== b.region) return a.region < b.region ? -1 : 1;
+      if(a.zone !== b.zone) return a.zone.localeCompare(b.zone, undefined, {numeric:true});
+      return a.city.localeCompare(b.city);
+    });
+
+    var tbody = document.getElementById('sia-tbody');
+    tbody.innerHTML = '';
+    var lastZone = null;
+    var tier = state.tier;
+    if(!rows.length){
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="7">No SIA destinations match these filters.</td></tr>';
+    }
+    rows.forEach(function(r){
+      if(r.zone !== lastZone){
+        var zr = document.createElement('tr');
+        zr.className = 'zone-row';
+        zr.innerHTML = '<td colspan="7">'+r.zone+' &middot; '+r.zoneName+' <span style="opacity:.7;font-weight:500;">('+r.region+')</span></td>';
+        tbody.appendChild(zr);
+        lastZone = r.zone;
+      }
+      var econField = tier==='saver' ? 'econSaver' : 'econAdv';
+      var premField = tier==='saver' ? 'premSaver' : 'premAdv';
+      var busField  = tier==='saver' ? 'busSaver'  : 'busAdv';
+      var firstField= tier==='saver' ? 'firstSaver': 'firstAdv';
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td class="city">'+r.city+'</td>'+
+        '<td class="country">'+r.country+'</td>'+
+        '<td class="mono" style="color:var(--ink-faint);">'+r.zone+'</td>'+
+        '<td>'+fmtCell(r[econField], 'SIA', econField, r.zone, r.city)+'</td>'+
+        '<td>'+fmtCell(r[premField], 'SIA', premField, r.zone, r.city)+'</td>'+
+        '<td>'+fmtCell(r[busField], 'SIA', busField, r.zone, r.city)+'</td>'+
+        '<td>'+fmtCell(r[firstField], 'SIA', firstField, r.zone, r.city)+'</td>';
+      tbody.appendChild(tr);
+    });
+    document.getElementById('sia-count').textContent = rows.length + ' destination'+(rows.length===1?''/&s')+' shown · '+ (state.trip===1?'one-way':'return') +' · ' + (tier==='saver'?'Saver':'Advantage');
+  }
+
+  function renderScoot(){
+    var section = document.getElementById('scoot-section');
+    if(state.airline === 'sia'){ section.style.display='none'; return; }
+    section.style.display='';
+    var lookup = ratesLookup(DATA.scootRates, 'zone');
+    var flagged = DATA.scootFlaggedZones || [];
+    var rows = DATA.scootDestinations.map(function(d){
+      var z = lookup[d.zone];
+      return Object.assign({}, d, z);
+    }).filter(matchesFilters);
+
+    rows.sort(function(a,b){
+      if(a.region !== b.region) return a.region < b.region ? -1 : 1;
+      if(a.zone !== b.zone) return a.zone.localeCompare(b.zone, undefined, {numeric:true});
+      return a.city.localeCompare(b.city);
+    });
+
+    var tbody = document.getElementById('scoot-tbody');
+    tbody.innerHTML = '';
+    var lastZone = null;
+    var tier = state.tier;
+    if(!rows.length){
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="4">No Scoot destinations match these filters.</td></tr>';
+    }
+    var anyFlag = false;
+    rows.forEach(function(r){
+      if(r.zone !== lastZone){
+        var zr = document.createElement('tr');
+        zr.className = 'zone-row';
+        zr.innerHTML = '<td colspan="4">'+r.zone+' &middot; '+r.zoneName+' <span style="opacity:.7;font-weight:500;">('+r.region+')</span></td>';
+        tbody.appendChild(zr);
+        lastZone = r.zone;
+      }
+      var scootField = tier==='saver' ? 'saver' : 'advantage';
+      var val = r[scootField];
+      var isFlagged = flagged.indexOf(r.zone) !== -1;
+      if(isFlagged) anyFlag = true;
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td class="city">'+r.city+'</td>'+
+        '<td class="country">'+r.country+'</td>'+
+        '<td class="mono" style="color:var(--ink-faint);">'+r.zone+'</td>'+
+        '<td>'+fmtCell(val, 'Scoot', scootField, r.zone, r.city)+(isFlagged?'<span class="flag" title="Extracted from a complex PDF table — double-check against the official Scoot award chart before booking.">&#9888;</span>':'')+'</td>';
+      tbody.appendChild(tr);
+    });
+    document.getElementById('scoot-count').textContent = rows.length + ' destination'+(rows.length===1?'':'s')+' shown · '+ (state.trip===1?'one-way':'return') +' · '+ (tier==='saver'?'Saver':'Advantage');
+    document.getElementById('scoot-flag-note').innerHTML = anyFlag
+      ? '<span class="flag" style="margin-left:0;">&#9888;</span> Zones flagged this way (India, Japan &amp; South Korea) had mileage figures that were hard to parse cleanly out of Scoot’s official PDF matrix &mdash; worth confirming on flyscoot.com before you book.'
+      : '';
+  }
+
+  var SIA_CABINS = [
+    {field:'econSaver', advField:'econAdv', label:'Economy'},
+    {field:'premSaver', advField:'premAdv', label:'Premium Economy'},
+    {field:'busSaver', advField:'busAdv', label:'Business'},
+    {field:'firstSaver', advField:'firstAdv', label:'First'},
+  ];
+
+  function computeResults(){
+    var results = [];
+    var tier = state.tier;
+
+    if(state.airline !== 'scoot'){
+      var siaLookup = ratesLookup(DATA.siaRates, 'zone');
+      DATA.siaDestinations.forEach(function(d){
+        var z = siaLookup[d.zone];
+        if(!z) return;
+        var row = Object.assign({}, d, z);
+        if(!matchesFilters(row)) return;
+        SIA_CABINS.forEach(function(c){
+          var field = tier==='saver' ? c.field : c.advField;
+          var base = row[field];
+          if(base===null || base===undefined) return;
+          var adj = promoPrice(base, 'SIA', field, row.zone, row.city);
+          var miles = adj.price * state.trip;
+          results.push({
+            airline:'SIA', city:row.city, country:row.country, zone:row.zone,
+            cabin:c.label, miles:miles, promo:adj.promo
+          });
+        });
+      });
+    }
+
+    if(state.airline !== 'sia'){
+      var scootLookup = ratesLookup(DATA.scootRates, 'zone');
+      var flagged = DATA.scootFlaggedZones || [];
+      DATA.scootDestinations.forEach(function(d){
+        var z = scootLookup[d.zone];
+        if(!z) return;
+        var row = Object.assign({}, d, z);
+        if(!matchesFilters(row)) return;
+        var field = tier==='saver' ? 'saver' : 'advantage';
+        var base = row[field];
+        if(base===null || base===undefined) return;
+        var adj = promoPrice(base, 'Scoot', field, row.zone, row.city);
+        var miles = adj.price * state.trip;
+        results.push({
+          airline:'Scoot', city:row.city, country:row.country, zone:row.zone,
+          cabin:'Economy'+(flagged.indexOf(row.zone)!==-1?' ⚠':''), miles:miles, promo:adj.promo
+        });
+      });
+    }
+
+    results.sort(function(a,b){ return a.miles - b.miles; });
+    return results;
+  }
+
+  function renderResults(){
+    if(!DATA) return;
+    var section = document.getElementById('results-section');
+    var list = document.getElementById('results-list');
+    var more = document.getElementById('results-more');
+    var budget = state.budget;
+    if(!budget || budget <= 0){
+      section.classList.remove('show');
+      list.innerHTML = '';
+      more.textContent = '';
+      return;
+    }
+    section.classList.add('show');
+    var all = computeResults().filter(function(r){ return r.miles <= budget; });
+    var CAP = 80;
+    var shown = all.slice(0, CAP);
+
+    if(!shown.length){
+      list.innerHTML = '<div class="spot-empty">Nothing matches within '+fmtNum(budget)+'k miles under the current filters. Try Advantage awards, a wider region, or Return → One-way.</div>';
+      more.textContent = '';
+      return;
+    }
+
+    list.innerHTML = shown.map(function(r){
+      var left = budget - r.miles;
+      return '<div class="result-row">'+
+        '<span class="tag '+(r.airline==='SIA'?'sia':'scoot')+'">'+r.airline+'</span>'+
+        '<span><span class="r-dest">'+r.city+'</span><br><span class="r-country">'+r.country+' · '+r.zone+'</span></span>'+
+        '<span class="r-cabin">'+r.cabin+'</span>'+
+        '<span class="r-miles">'+fmtNum(r.miles)+'k'+(r.promo?'<span class="promo-dot" title="'+r.promo.title+'">&nbsp;</span>':'')+'</span>'+
+        '<span class="r-left">'+fmtNum(left)+'k left over</span>'+
+        '</div>';
+    }).join('');
+
+    more.textContent = all.length > CAP
+      ? ('Showing the cheapest '+CAP+' of '+all.length+' matches.')
+      : (all.length + ' match'+(all.length===1?'':'es')+' within budget.');
+  }
+
+  function promoPill(status){
+    if(status==='active') return '<span class="pill active">Booking open</span>';
+    if(status==='closing') return '<span class="pill closing">Closing soon</span>';
+    return '<span class="pill closed">Booking closed</span>';
+  }
+
+  function renderPromos(){
+    var host = document.getElementById('promo-grid');
+    host.innerHTML = '';
+    if(!DATA.promotions || !DATA.promotions.length){
+      host.innerHTML = '<div class="spot-empty">No promotions on file yet.</div>';
+      return;
+    }
+    DATA.promotions.forEach(function(p){
+      var el = document.createElement('div');
+      el.className = 'promo';
+      el.innerHTML =
+        '<div class="promo-top"><span class="tag '+(p.airline==='SIA'?'sia':'scoot')+'">'+p.airline+'</span>'+promoPill(p.status)+'</div>'+
+        '<h3>'+p.title+'</h3>'+
+        '<div class="discount">'+p.discount+'</div>'+
+        '<div class="win"><span>Book by: <b>'+p.bookWindow+'</b></span><span>Travel: <b>'+p.travelWindow+'</b></span></div>'+
+        (p.notes ? '<div class="notes">'+p.notes+'</div>' : '')+
+        ((p.rules && p.rules.length && (p.status==='active'||p.status==='closing')) ? '<div class="notes" style="color:var(--good);font-weight:600;">&#10003; Already applied to the miles table below</div>' : '')+
+        (p.url ? '<a href="'+p.url+'" target="_blank" rel="noopener">Official page &#8594;</a>' : '');
+      host.appendChild(el);
+    });
+  }
+
+  function renderMonitorBanner(){
+    var host = document.getElementById('monitor-banner-host');
+    var m = DATA.meta || {};
+    if(m.lastChangeDetected && m.lastChangeDetected.at){
+      var urls = m.lastChangeDetected.urls || [];
+      host.innerHTML = '<div class="monitor-banner">&#9888;&#65039; <span><b>A promo page changed on '+fmtDate(m.lastChangeDetected.at)+'</b> &mdash; the automated checker noticed a difference on '+
+        (urls.length ? urls.map(function(u){return '<a href="'+u+'" target="_blank" rel="noopener">'+u.replace(/^https?:\/\//,'').split('/')[0]+'</a>';}).join(', ') : 'an official promo page')+
+        '. Numbers below may be out of date until someone reviews and updates it.</span></div>';
+    } else {
+      host.innerHTML = '';
+    }
+    var statusEl = document.getElementById('monitor-status');
+    if(statusEl){
+      statusEl.textContent = m.lastChecked ? ('Auto-checker last ran: '+fmtDate(m.lastChecked)+' (checks the official promo pages every few hours)') : '';
+    }
+  }
+
+  function renderMeta(){
+    document.getElementById('last-updated').textContent = DATA.meta && DATA.meta.lastUpdated ? fmtDate(DATA.meta.lastUpdated) : '—';
+    var srcHost = document.getElementById('src-list');
+    srcHost.innerHTML = '';
+    (DATA.meta && DATA.meta.sources || []).forEach(function(s, i){
+      var a = document.createElement('a');
+      a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = s.label;
+      srcHost.appendChild(a);
+      if(i < DATA.meta.sources.length - 1){
+        var sep = document.createElement('span');
+        sep.textContent = '·';
+        srcHost.appendChild(sep);
+      }
+    });
+  }
+
+  function renderAll(){
+    if(!DATA) return;
+    renderSia();
+    renderScoot();
+    renderResults();
+  }
+
+  document.getElementById('f-search').addEventListener('input', function(e){
+    state.q = e.target.value;
+    renderAll();
+  });
+
+  document.getElementById('f-budget').addEventListener('input', function(e){
+    var v = parseFloat(e.target.value);
+    // the input is in whole miles (e.g. 45000); rates are stored in thousands.
+    state.budget = (e.target.value === '' || isNaN(v)) ? null : v/1000;
+    renderResults();
+  });
+
+  wireSeg('f-airline','airline');
+  wireSeg('f-trip','trip');
+  wireSeg('f-tier','tier');
+  document.getElementById('f-budget').setAttribute('disabled','disabled');
+
+  function boot(data){
+    DATA = data;
+    document.getElementById('f-budget').removeAttribute('disabled');
+    renderRegionChips();
+    renderMeta();
+    renderPromos();
+    renderMonitorBanner();
+    renderAll();
+  }
+
+  function showLoadError(){
+    document.getElementById('promo-grid').innerHTML =
+      '<div class="spot-empty">Couldn\'t load data.json. If you just published this page, give GitHub Pages a minute, then reload. Otherwise check the repo\'s Actions tab for the latest run.</div>';
+  }
+
+  // Cache-bust so viewers always see the latest data.json right after an
+  // Action commits a fresh one, rather than a stale cached copy.
+  fetch('data.json?_=' + Date.now())
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(boot)
+    .catch(function(err){ console.error('Failed to load data.json', err); showLoadError(); });
+})();
+</script>
