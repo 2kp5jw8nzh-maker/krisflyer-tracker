@@ -307,7 +307,7 @@
   <section class="card" id="promo-section">
     <div class="section-head">
       <h2>Current KrisFlyer promotions</h2>
-      <span class="section-note">A GitHub Action checks the official promo pages every few hours and pushes an alert when something changes.</span>
+      <span class="section-note">A GitHub Action checks the official promo pages every few days and pushes an alert when something changes.</span>
     </div>
     <div id="monitor-banner-host" style="margin-bottom:14px;"></div>
     <div class="promo-grid" id="promo-grid"></div>
@@ -760,7 +760,7 @@
     }
     var statusEl = document.getElementById('monitor-status');
     if(statusEl){
-      statusEl.textContent = m.lastChecked ? ('Auto-checker last ran: '+fmtDate(m.lastChecked)+' (checks the official promo pages every few hours)') : '';
+      statusEl.textContent = m.lastChecked ? ('Auto-checker last ran: '+fmtDate(m.lastChecked)+' (checks the official promo pages every few days)') : '';
     }
   }
 
