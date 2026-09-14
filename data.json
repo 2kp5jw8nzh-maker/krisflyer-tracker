@@ -1,0 +1,1081 @@
+{
+  "meta": {
+    "lastUpdated": "2026-09-12T00:00:00+08:00",
+    "sources": [
+      {
+        "label": "SIA one-way Saver/Advantage award chart (PDF, eff. 1 Nov 2025)",
+        "url": "https://www.singaporeair.com/content/dam/sia/web-assets/pdfs/ppsclub-krisflyer/krisflyer/progupdates/awardcharts/SingaporeAirlinesOne-WayAdvantageSaverAwardChartupdated1Nov25.pdf"
+      },
+      {
+        "label": "Scoot KrisFlyer award chart (PDF)",
+        "url": "https://cdn.flyscoot.com/prod/docs/default-source/scoot-award-chart/scoot-award-chart-pdf.pdf"
+      },
+      {
+        "label": "KrisFlyer programme updates 2025",
+        "url": "https://www.singaporeair.com/en_UK/us/ppsclub-krisflyer/KFupdates2025/"
+      },
+      {
+        "label": "KrisFlyer Global Redemption Sale (official)",
+        "url": "https://www.singaporeair.com/en_UK/sg/ppsclub-krisflyer/kf-flight-redemption/"
+      },
+      {
+        "label": "KrisFlyer Spontaneous Escapes (official)",
+        "url": "https://www.singaporeair.com/en_UK/sg/plan-travel/promotions/global/kf/kf-promo/kfescapes/"
+      },
+      {
+        "label": "Scoot Spontaneous Escapes (official)",
+        "url": "https://www.flyscoot.com/en/krisflyer/spontaneous-escapes"
+      },
+      {
+        "label": "List of Singapore Airlines destinations (Wikipedia)",
+        "url": "https://en.wikipedia.org/wiki/List_of_Singapore_Airlines_destinations"
+      },
+      {
+        "label": "List of Scoot destinations (Wikipedia)",
+        "url": "https://en.wikipedia.org/wiki/List_of_Scoot_destinations"
+      }
+    ],
+    "lastChecked": null,
+    "lastChangeDetected": null
+  },
+  "siaRates": [
+    {
+      "zone": "Z2",
+      "zoneName": "Malaysia, Indonesia & Brunei",
+      "region": "Southeast Asia",
+      "econSaver": 8.0,
+      "premSaver": null,
+      "busSaver": 22.0,
+      "firstSaver": 32.0,
+      "econAdv": 16.5,
+      "premAdv": 40.5,
+      "busAdv": 60.5,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z3",
+      "zoneName": "Philippines, Thailand, Vietnam, Myanmar & Cambodia",
+      "region": "Southeast Asia",
+      "econSaver": 13.0,
+      "premSaver": null,
+      "busSaver": 25.0,
+      "firstSaver": 38.0,
+      "econAdv": 27.5,
+      "premAdv": 46.0,
+      "busAdv": 72.0,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z4",
+      "zoneName": "South China, Hong Kong SAR & Taiwan",
+      "region": "North Asia",
+      "econSaver": 15.5,
+      "premSaver": 28.0,
+      "busSaver": 35.5,
+      "firstSaver": 47.5,
+      "econAdv": 33.0,
+      "premAdv": 57.5,
+      "busAdv": 84.0,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z5",
+      "zoneName": "North China (Beijing & Shanghai)",
+      "region": "North Asia",
+      "econSaver": 20.5,
+      "premSaver": 36.0,
+      "busSaver": 45.0,
+      "firstSaver": 61.5,
+      "econAdv": 44.0,
+      "premAdv": 75.0,
+      "busAdv": 112.5,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z6",
+      "zoneName": "South Asia (India, Sri Lanka, Maldives, Nepal & Bangladesh)",
+      "region": "South Asia",
+      "econSaver": 19.0,
+      "premSaver": 36.0,
+      "busSaver": 45.0,
+      "firstSaver": 61.5,
+      "econAdv": 40.5,
+      "premAdv": 75.0,
+      "busAdv": 112.5,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z7",
+      "zoneName": "Japan & South Korea",
+      "region": "North Asia",
+      "econSaver": 25.5,
+      "premSaver": 39.5,
+      "busSaver": 54.5,
+      "firstSaver": 81.0,
+      "econAdv": 49.5,
+      "premAdv": 80.5,
+      "busAdv": 138.0,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z8",
+      "zoneName": "Australia — Perth & Darwin",
+      "region": "Southwest Pacific",
+      "econSaver": 20.5,
+      "premSaver": null,
+      "busSaver": 42.5,
+      "firstSaver": 60.5,
+      "econAdv": 40.5,
+      "premAdv": 75.0,
+      "busAdv": 114.5,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z9",
+      "zoneName": "Australia (excl. Perth/Darwin) & New Zealand",
+      "region": "Southwest Pacific",
+      "econSaver": 29.0,
+      "premSaver": 53.5,
+      "busSaver": 72.0,
+      "firstSaver": 98.0,
+      "econAdv": 60.5,
+      "premAdv": 103.5,
+      "busAdv": 178.5,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z10",
+      "zoneName": "Africa, Middle East & Turkey",
+      "region": "Africa / Middle East",
+      "econSaver": 32.0,
+      "premSaver": 51.5,
+      "busSaver": 68.0,
+      "firstSaver": 95.0,
+      "econAdv": 66.5,
+      "premAdv": 122.0,
+      "busAdv": 171.0,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z11",
+      "zoneName": "Europe",
+      "region": "Europe",
+      "econSaver": 44.0,
+      "premSaver": 74.5,
+      "busSaver": 108.5,
+      "firstSaver": 148.0,
+      "econAdv": 79.0,
+      "premAdv": 141.5,
+      "busAdv": 259.5,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z12",
+      "zoneName": "USA — West Coast",
+      "region": "Americas",
+      "econSaver": 44.0,
+      "premSaver": 79.0,
+      "busSaver": 112.5,
+      "firstSaver": 154.0,
+      "econAdv": 79.0,
+      "premAdv": 148.0,
+      "busAdv": 262.0,
+      "firstAdv": null
+    },
+    {
+      "zone": "Z13",
+      "zoneName": "USA — East Coast",
+      "region": "Americas",
+      "econSaver": 46.0,
+      "premSaver": 84.5,
+      "busSaver": 117.0,
+      "firstSaver": 156.0,
+      "econAdv": 84.5,
+      "premAdv": 165.0,
+      "busAdv": 279.5,
+      "firstAdv": null
+    }
+  ],
+  "scootRates": [
+    {
+      "zone": "SZ2",
+      "zoneName": "Malaysia (Kuching, Miri, Kota Kinabalu, Sibu)",
+      "region": "Southeast Asia",
+      "saver": 1.5,
+      "advantage": 3.5
+    },
+    {
+      "zone": "SZ3",
+      "zoneName": "Malaysia (Peninsular — KL, Penang, Langkawi, etc.)",
+      "region": "Southeast Asia",
+      "saver": 2.0,
+      "advantage": 4.5
+    },
+    {
+      "zone": "SZ4",
+      "zoneName": "Indonesia (Jakarta, Pekanbaru, Padang, Belitung)",
+      "region": "Southeast Asia",
+      "saver": 2.5,
+      "advantage": 5.5
+    },
+    {
+      "zone": "SZ5",
+      "zoneName": "Indonesia (Bali, Surabaya, Medan & other cities)",
+      "region": "Southeast Asia",
+      "saver": 4.5,
+      "advantage": 9.0
+    },
+    {
+      "zone": "SZ6",
+      "zoneName": "N. Thailand (Chiang Mai/Rai, Koh Samui) & Labuan Bajo",
+      "region": "Southeast Asia",
+      "saver": 6.0,
+      "advantage": 12.0
+    },
+    {
+      "zone": "SZ7",
+      "zoneName": "Thailand (Bangkok, Phuket, Krabi, Hat Yai)",
+      "region": "Southeast Asia",
+      "saver": 6.5,
+      "advantage": 12.5
+    },
+    {
+      "zone": "SZ8",
+      "zoneName": "Laos & Vietnam (excl. Nha Trang)",
+      "region": "Southeast Asia",
+      "saver": 12.0,
+      "advantage": 24.0
+    },
+    {
+      "zone": "SZ9",
+      "zoneName": "Philippines & Nha Trang (Vietnam)",
+      "region": "Southeast Asia",
+      "saver": 8.0,
+      "advantage": 13.5
+    },
+    {
+      "zone": "SZ10",
+      "zoneName": "Hong Kong, Macau, Taiwan & S. China (Haikou, Nanning, Guangzhou)",
+      "region": "North Asia",
+      "saver": 12.5,
+      "advantage": 24.0
+    },
+    {
+      "zone": "SZ11",
+      "zoneName": "China — other cities",
+      "region": "North Asia",
+      "saver": 24.0,
+      "advantage": 37.5
+    },
+    {
+      "zone": "SZ12",
+      "zoneName": "India",
+      "region": "South Asia",
+      "saver": 4.5,
+      "advantage": 9.0
+    },
+    {
+      "zone": "SZ13",
+      "zoneName": "Japan & South Korea",
+      "region": "North Asia",
+      "saver": 6.0,
+      "advantage": 12.5
+    },
+    {
+      "zone": "SZ14",
+      "zoneName": "Australia — Perth",
+      "region": "Southwest Pacific",
+      "saver": 7.5,
+      "advantage": 15.5
+    },
+    {
+      "zone": "SZ15",
+      "zoneName": "Australia (excl. Perth)",
+      "region": "Southwest Pacific",
+      "saver": 8.0,
+      "advantage": 16.0
+    },
+    {
+      "zone": "SZ16",
+      "zoneName": "Greece & Austria",
+      "region": "Europe",
+      "saver": 13.5,
+      "advantage": 22.5
+    }
+  ],
+  "scootFlaggedZones": [
+    "SZ12",
+    "SZ13"
+  ],
+  "siaDestinations": [
+    {
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "zone": "Z2"
+    },
+    {
+      "city": "Penang",
+      "country": "Malaysia",
+      "zone": "Z2"
+    },
+    {
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "zone": "Z2"
+    },
+    {
+      "city": "Denpasar (Bali)",
+      "country": "Indonesia",
+      "zone": "Z2"
+    },
+    {
+      "city": "Medan",
+      "country": "Indonesia",
+      "zone": "Z2"
+    },
+    {
+      "city": "Bandung",
+      "country": "Indonesia",
+      "zone": "Z2"
+    },
+    {
+      "city": "Manila",
+      "country": "Philippines",
+      "zone": "Z3"
+    },
+    {
+      "city": "Cebu",
+      "country": "Philippines",
+      "zone": "Z3"
+    },
+    {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "zone": "Z3"
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "zone": "Z3"
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "zone": "Z3"
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "zone": "Z3"
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "zone": "Z3"
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "zone": "Z3"
+    },
+    {
+      "city": "Hong Kong",
+      "country": "Hong Kong SAR",
+      "zone": "Z4"
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "zone": "Z4"
+    },
+    {
+      "city": "Xiamen",
+      "country": "China",
+      "zone": "Z4"
+    },
+    {
+      "city": "Shenzhen",
+      "country": "China",
+      "zone": "Z4"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "zone": "Z5"
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "zone": "Z6"
+    },
+    {
+      "city": "Chennai",
+      "country": "India",
+      "zone": "Z6"
+    },
+    {
+      "city": "Bengaluru",
+      "country": "India",
+      "zone": "Z6"
+    },
+    {
+      "city": "Kochi",
+      "country": "India",
+      "zone": "Z6"
+    },
+    {
+      "city": "Kolkata",
+      "country": "India",
+      "zone": "Z6"
+    },
+    {
+      "city": "Colombo",
+      "country": "Sri Lanka",
+      "zone": "Z6"
+    },
+    {
+      "city": "Malé",
+      "country": "Maldives",
+      "zone": "Z6"
+    },
+    {
+      "city": "Dhaka",
+      "country": "Bangladesh",
+      "zone": "Z6"
+    },
+    {
+      "city": "Kathmandu",
+      "country": "Nepal",
+      "zone": "Z6"
+    },
+    {
+      "city": "Tokyo (Haneda)",
+      "country": "Japan",
+      "zone": "Z7"
+    },
+    {
+      "city": "Tokyo (Narita)",
+      "country": "Japan",
+      "zone": "Z7"
+    },
+    {
+      "city": "Osaka",
+      "country": "Japan",
+      "zone": "Z7"
+    },
+    {
+      "city": "Nagoya",
+      "country": "Japan",
+      "zone": "Z7"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "zone": "Z7"
+    },
+    {
+      "city": "Perth",
+      "country": "Australia",
+      "zone": "Z8"
+    },
+    {
+      "city": "Darwin",
+      "country": "Australia",
+      "zone": "Z8"
+    },
+    {
+      "city": "Adelaide",
+      "country": "Australia",
+      "zone": "Z9"
+    },
+    {
+      "city": "Brisbane",
+      "country": "Australia",
+      "zone": "Z9"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "zone": "Z9"
+    },
+    {
+      "city": "Sydney",
+      "country": "Australia",
+      "zone": "Z9"
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "zone": "Z10"
+    },
+    {
+      "city": "Riyadh",
+      "country": "Saudi Arabia",
+      "zone": "Z10"
+    },
+    {
+      "city": "Istanbul",
+      "country": "Türkiye",
+      "zone": "Z10"
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "zone": "Z10"
+    },
+    {
+      "city": "Johannesburg",
+      "country": "South Africa",
+      "zone": "Z10"
+    },
+    {
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "zone": "Z11"
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "zone": "Z11"
+    },
+    {
+      "city": "Brussels",
+      "country": "Belgium",
+      "zone": "Z11"
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "zone": "Z11"
+    },
+    {
+      "city": "Frankfurt",
+      "country": "Germany",
+      "zone": "Z11"
+    },
+    {
+      "city": "Munich",
+      "country": "Germany",
+      "zone": "Z11"
+    },
+    {
+      "city": "London (Heathrow)",
+      "country": "United Kingdom",
+      "zone": "Z11"
+    },
+    {
+      "city": "London (Gatwick)",
+      "country": "United Kingdom",
+      "zone": "Z11"
+    },
+    {
+      "city": "Manchester",
+      "country": "United Kingdom",
+      "zone": "Z11"
+    },
+    {
+      "city": "Milan",
+      "country": "Italy",
+      "zone": "Z11"
+    },
+    {
+      "city": "Rome",
+      "country": "Italy",
+      "zone": "Z11"
+    },
+    {
+      "city": "Paris",
+      "country": "France",
+      "zone": "Z11"
+    },
+    {
+      "city": "Zurich",
+      "country": "Switzerland",
+      "zone": "Z11"
+    },
+    {
+      "city": "Los Angeles",
+      "country": "USA",
+      "zone": "Z12"
+    },
+    {
+      "city": "San Francisco",
+      "country": "USA",
+      "zone": "Z12"
+    },
+    {
+      "city": "Newark",
+      "country": "USA",
+      "zone": "Z13"
+    },
+    {
+      "city": "New York (JFK)",
+      "country": "USA",
+      "zone": "Z13"
+    }
+  ],
+  "scootDestinations": [
+    {
+      "city": "Kuching",
+      "country": "Malaysia",
+      "zone": "SZ2"
+    },
+    {
+      "city": "Miri",
+      "country": "Malaysia",
+      "zone": "SZ2"
+    },
+    {
+      "city": "Kota Kinabalu",
+      "country": "Malaysia",
+      "zone": "SZ2"
+    },
+    {
+      "city": "Sibu",
+      "country": "Malaysia",
+      "zone": "SZ2"
+    },
+    {
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "zone": "SZ3"
+    },
+    {
+      "city": "Penang",
+      "country": "Malaysia",
+      "zone": "SZ3"
+    },
+    {
+      "city": "Langkawi",
+      "country": "Malaysia",
+      "zone": "SZ3"
+    },
+    {
+      "city": "Ipoh",
+      "country": "Malaysia",
+      "zone": "SZ3"
+    },
+    {
+      "city": "Kota Bharu",
+      "country": "Malaysia",
+      "zone": "SZ3"
+    },
+    {
+      "city": "Kuantan",
+      "country": "Malaysia",
+      "zone": "SZ3"
+    },
+    {
+      "city": "Malacca",
+      "country": "Malaysia",
+      "zone": "SZ3"
+    },
+    {
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "zone": "SZ4"
+    },
+    {
+      "city": "Pekanbaru",
+      "country": "Indonesia",
+      "zone": "SZ4"
+    },
+    {
+      "city": "Palembang",
+      "country": "Indonesia",
+      "zone": "SZ4"
+    },
+    {
+      "city": "Tanjung Pandan (Belitung)",
+      "country": "Indonesia",
+      "zone": "SZ4"
+    },
+    {
+      "city": "Denpasar (Bali)",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Surabaya",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Medan",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Yogyakarta",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Semarang",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Balikpapan",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Makassar",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Manado",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Lombok",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Bandung",
+      "country": "Indonesia",
+      "zone": "SZ5"
+    },
+    {
+      "city": "Chiang Mai",
+      "country": "Thailand",
+      "zone": "SZ6"
+    },
+    {
+      "city": "Chiang Rai",
+      "country": "Thailand",
+      "zone": "SZ6"
+    },
+    {
+      "city": "Koh Samui",
+      "country": "Thailand",
+      "zone": "SZ6"
+    },
+    {
+      "city": "Labuan Bajo",
+      "country": "Indonesia",
+      "zone": "SZ6"
+    },
+    {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "zone": "SZ7"
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "zone": "SZ7"
+    },
+    {
+      "city": "Krabi",
+      "country": "Thailand",
+      "zone": "SZ7"
+    },
+    {
+      "city": "Hat Yai",
+      "country": "Thailand",
+      "zone": "SZ7"
+    },
+    {
+      "city": "Vientiane",
+      "country": "Laos",
+      "zone": "SZ8"
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "zone": "SZ8"
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "zone": "SZ8"
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "zone": "SZ8"
+    },
+    {
+      "city": "Phu Quoc",
+      "country": "Vietnam",
+      "zone": "SZ8"
+    },
+    {
+      "city": "Manila",
+      "country": "Philippines",
+      "zone": "SZ9"
+    },
+    {
+      "city": "Cebu",
+      "country": "Philippines",
+      "zone": "SZ9"
+    },
+    {
+      "city": "Clark",
+      "country": "Philippines",
+      "zone": "SZ9"
+    },
+    {
+      "city": "Davao",
+      "country": "Philippines",
+      "zone": "SZ9"
+    },
+    {
+      "city": "Iloilo",
+      "country": "Philippines",
+      "zone": "SZ9"
+    },
+    {
+      "city": "Nha Trang",
+      "country": "Vietnam",
+      "zone": "SZ9"
+    },
+    {
+      "city": "Hong Kong",
+      "country": "Hong Kong SAR",
+      "zone": "SZ10"
+    },
+    {
+      "city": "Macau",
+      "country": "Macau SAR",
+      "zone": "SZ10"
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "zone": "SZ10"
+    },
+    {
+      "city": "Haikou",
+      "country": "China",
+      "zone": "SZ10"
+    },
+    {
+      "city": "Nanning",
+      "country": "China",
+      "zone": "SZ10"
+    },
+    {
+      "city": "Guangzhou",
+      "country": "China",
+      "zone": "SZ10"
+    },
+    {
+      "city": "Changsha",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Fuzhou",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Hangzhou",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Jieyang",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Kunming",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Nanjing",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Qingdao",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Shenyang",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Tianjin",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Wuhan",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Xi'an",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Zhengzhou",
+      "country": "China",
+      "zone": "SZ11"
+    },
+    {
+      "city": "Amritsar",
+      "country": "India",
+      "zone": "SZ12"
+    },
+    {
+      "city": "Chennai",
+      "country": "India",
+      "zone": "SZ12"
+    },
+    {
+      "city": "Coimbatore",
+      "country": "India",
+      "zone": "SZ12"
+    },
+    {
+      "city": "Thiruvananthapuram",
+      "country": "India",
+      "zone": "SZ12"
+    },
+    {
+      "city": "Tiruchirapalli",
+      "country": "India",
+      "zone": "SZ12"
+    },
+    {
+      "city": "Visakhapatnam",
+      "country": "India",
+      "zone": "SZ12"
+    },
+    {
+      "city": "Naha (Okinawa)",
+      "country": "Japan",
+      "zone": "SZ13"
+    },
+    {
+      "city": "Osaka",
+      "country": "Japan",
+      "zone": "SZ13"
+    },
+    {
+      "city": "Sapporo",
+      "country": "Japan",
+      "zone": "SZ13"
+    },
+    {
+      "city": "Tokyo (Haneda)",
+      "country": "Japan",
+      "zone": "SZ13"
+    },
+    {
+      "city": "Tokyo (Narita)",
+      "country": "Japan",
+      "zone": "SZ13"
+    },
+    {
+      "city": "Jeju",
+      "country": "South Korea",
+      "zone": "SZ13"
+    },
+    {
+      "city": "Seoul (Incheon)",
+      "country": "South Korea",
+      "zone": "SZ13"
+    },
+    {
+      "city": "Perth",
+      "country": "Australia",
+      "zone": "SZ14"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "zone": "SZ15"
+    },
+    {
+      "city": "Sydney",
+      "country": "Australia",
+      "zone": "SZ15"
+    },
+    {
+      "city": "Athens",
+      "country": "Greece",
+      "zone": "SZ16"
+    },
+    {
+      "city": "Vienna",
+      "country": "Austria",
+      "zone": "SZ16"
+    }
+  ],
+  "promotions": [
+    {
+      "id": "sia-grs-sep2026",
+      "airline": "SIA",
+      "title": "KrisFlyer Global Redemption Sale",
+      "status": "active",
+      "discount": "15% off Economy Saver awards (most regions); 15% off Premium Economy on select US non-stops; 10% off Scoot Economy Saver awards",
+      "bookWindow": "8 Sep 2026 09:00 SGT – 20 Sep 2026 23:59 SGT",
+      "travelWindow": "1 Nov 2026 – 31 May 2027",
+      "notes": "Excludes Johannesburg & Auckland. No refund/cancellation on promo fares. No stopovers. Blackout dates apply by route.",
+      "url": "https://www.singaporeair.com/en_UK/sg/ppsclub-krisflyer/kf-flight-redemption/",
+      "rules": [
+        {
+          "airline": "SIA",
+          "field": "econSaver",
+          "discountPct": 15,
+          "excludeCities": [
+            "Johannesburg",
+            "Auckland"
+          ]
+        },
+        {
+          "airline": "SIA",
+          "field": "premSaver",
+          "discountPct": 15,
+          "includeZones": [
+            "Z12",
+            "Z13"
+          ]
+        },
+        {
+          "airline": "Scoot",
+          "field": "saver",
+          "discountPct": 10
+        }
+      ]
+    },
+    {
+      "id": "sia-spontaneous-sep2026",
+      "airline": "SIA",
+      "title": "KrisFlyer Spontaneous Escapes (September round)",
+      "status": "booking_closed",
+      "discount": "~30% off selected Economy/Premium Economy/Business awards",
+      "bookWindow": "Closed 31 Aug 2026",
+      "travelWindow": "1–30 Sep 2026",
+      "notes": "Latest confirmed round; booking window has closed. Next round not yet announced as of 12 Sep 2026 — the weekly refresh will pick it up when SIA publishes it.",
+      "url": "https://www.singaporeair.com/en_UK/sg/plan-travel/promotions/global/kf/kf-promo/kfescapes/",
+      "rules": []
+    },
+    {
+      "id": "scoot-spontaneous-sep2026",
+      "airline": "Scoot",
+      "title": "Scoot KrisFlyer Spontaneous Escapes (September round)",
+      "status": "booking_closed",
+      "discount": "15% off selected Scoot Economy Saver awards",
+      "bookWindow": "Closed 31 Aug 2026",
+      "travelWindow": "1–30 Sep 2026",
+      "notes": "Latest confirmed round; booking window has closed. Next round not yet announced as of 12 Sep 2026.",
+      "url": "https://www.flyscoot.com/en/krisflyer/spontaneous-escapes",
+      "rules": []
+    }
+  ]
+}
