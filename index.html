@@ -426,7 +426,7 @@
     return out;
   }
 
-  // Returns {price, prom} for one cabin field's one-way base rate `n`
+  // Returns {price, promo} for one cabin field's one-way base rate `n`
   // (`n` already in thousands of miles), applying any matching active
   // promo rule for this airline/field/zone/city combination.
   function promoPrice(n, airline, field, zone, city){
@@ -455,7 +455,7 @@
     if(adj.promo){
       var base = n * state.trip;
       var now = adj.price * state.trip;
-      return '<span class="price-cell"><span class="was(�'+fmtNum(base)+'k</span>'+
+      return '<span class="price-cell"><span class="was">'+fmtNum(base)+'k</span>'+
         '<span class="now">'+fmtNum(now)+'k<span class="promo-dot" title="'+adj.promo.title+' — '+adj.promo.pct+'% off, baked in">&nbsp;</span></span></span>';
     }
     var v = n * state.trip;
@@ -570,7 +570,7 @@
         '<td>'+fmtCell(r[firstField], 'SIA', firstField, r.zone, r.city)+'</td>';
       tbody.appendChild(tr);
     });
-    document.getElementById('sia-count').textContent = rows.length + ' destination'+(rows.length===1?''/&s')+' shown · '+ (state.trip===1?'one-way':'return') +' · ' + (tier==='saver'?'Saver':'Advantage');
+    document.getElementById('sia-count').textContent = rows.length + ' destination'+(rows.length===1?'':'s')+' shown · '+ (state.trip===1?'one-way':'return') +' · '+ (tier==='saver'?'Saver':'Advantage');
   }
 
   function renderScoot(){
