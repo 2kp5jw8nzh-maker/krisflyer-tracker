@@ -26,7 +26,7 @@ is at `https://<your-username>.github.io/krisflyer-tracker/`.
   site and sends a push notification via [ntfy](https://ntfy.sh) so you know
   to go check and update `data.json` by hand (or ask Claude to help).
 - `.github/workflows/update.yml` — the scheduled GitHub Action that runs
-  `check_promos.py` every 6 hours and commits any changes.
+  `check_promos.py` every 3 days and commits any changes.
 
 ## Get promo-change alerts on your phone
 
